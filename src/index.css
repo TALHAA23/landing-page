@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    font-family: 'Roboto',
+        sans-serif;
+    width: 100%;
+}
+
+.downUpAnimation {
+    animation: downUp .5s linear forwards reverse;
+}
+
+@keyframes downUp {
+    90% {
+        opacity: .2;
+    }
+
+    100% {
+        transform: translateY(20px);
+        opacity: 1;
+    }
+}
+
+.input {
+    -webkit-appearance: none;
+    /* remove default */
+    margin: 0 2px;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    vertical-align: middle;
+    box-shadow: hsla(0, 0%, 100%, .15) 0 1px 1px, inset hsla(0, 0%, 0%, .5) 0 0 0 1px;
+    background-color: hsla(0, 0%, 0%, .2);
+    background-image: -webkit-radial-gradient(hsla(200, 100%, 90%, 1) 0%, hsla(200, 100%, 70%, 1) 15%, hsla(200, 100%, 60%, .3) 28%, hsla(200, 100%, 30%, 0) 70%);
+    background-repeat: no-repeat;
+    -webkit-transition: background-position .15s cubic-bezier(.8, 0, 1, 1),
+        -webkit-transform .25s cubic-bezier(.8, 0, 1, 1);
+    outline: none;
+}
+
+.radio-input>.input:first-child {
+    background-color: hsla(0, 0%, 0%, .2);
+    background-image: -webkit-radial-gradient(rgb(1, 16, 23) 0%, rgb(18, 11, 11) 15%, hsla(200, 100%, 60%, .3) 28%, hsla(200, 100%, 30%, 0) 70%);
+}
+
+.radio-input>.input:nth-child(2) {
+    background-color: hsla(301, 58%, 73%, 0.545);
+    background-image: -webkit-radial-gradient(rgb(141, 8, 101) 0%, rgb(97, 3, 95) 15%, hsla(200, 100%, 60%, .3) 28%, hsla(200, 100%, 30%, 0) 70%);
+}
+
+.radio-input>.input:last-child {
+    background-color: hsla(28, 63%, 35%, 0.2);
+    background-image: -webkit-radial-gradient(rgb(130, 94, 4) 0%, rgb(118, 78, 15) 15%, hsla(200, 100%, 60%, .3) 28%, hsla(200, 100%, 30%, 0) 70%);
+}
+
+.input:checked {
+    -webkit-transition: background-position .2s .15s cubic-bezier(0, 0, .2, 1),
+        -webkit-transform .25s cubic-bezier(0, 0, .2, 1);
+}
+
+.input:active {
+    -webkit-transform: scale(1.5);
+    -webkit-transition: -webkit-transform .1s cubic-bezier(0, 0, .2, 1);
+}
+
+/* The up/down direction logic */
+
+.input,
+.input:active {
+    background-position: 24px 0;
+}
+
+.input:checked {
+    background-position: 0 0;
+}
+
+.input:checked~.input,
+.input:checked~.input:active {
+    background-position: -24px 0;
+}
